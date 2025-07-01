@@ -1,0 +1,32 @@
+<!Doctype html>
+
+<html>
+
+    <body>
+        <h1 id="main-title" >My DOM Practise page</h1>
+        <p class="paragraph">This is the first paragraph  </p>
+        <p class="paragraph special">This is the second paragraph</p>
+        <ul id="my-list">
+            <li>Item one</li>
+            <li class="list-item" >Item Two</li>
+            <li>Item Three</li>
+        </ul>
+
+        <button id="myButton">click me</button>
+        <script>
+            
+            // const title = document.getElementById('main-title');
+            // console.log(title);
+
+            const myButton = document.getElementById('myButton');
+            function handleclick(){
+                console.log("Button was clicked!");
+                myButton.textContent = "clicked";
+            }
+
+            myButton.addEventListener('click',handleclick);
+
+        </script>
+    </body>
+
+</html>
