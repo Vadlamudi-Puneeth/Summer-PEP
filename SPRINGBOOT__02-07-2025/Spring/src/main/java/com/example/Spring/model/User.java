@@ -32,7 +32,7 @@ public class User {
 
     @Column(name = "updated_at")
     @UpdateTimestamp
-    private LocalDate updatedAt;
+    private LocalDateTime updatedAt;
 
     public LocalDateTime getCreatedAt() {
         return createdAt;
@@ -42,11 +42,11 @@ public class User {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getUpdatedAt() {
+    public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(LocalDate updatedAt) {
+    public void setUpdatedAt(LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 
