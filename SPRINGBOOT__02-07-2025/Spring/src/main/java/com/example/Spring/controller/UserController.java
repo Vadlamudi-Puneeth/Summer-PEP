@@ -3,6 +3,9 @@ package com.example.Spring.controller;
 import com.example.Spring.model.User;
 import com.example.Spring.repository.UserRepository;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +24,7 @@ public class UserController {
     public ResponseEntity<List<User>> createUser(@Valid @RequestBody List<User> users) {
         List<User> savedUsers = userRepository.saveAll(users);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedUsers);
-    }     
+    }
 
     @GetMapping
     public List<User> getAllUsers(){
@@ -32,6 +35,11 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id){
         Optional<User> user = userRepository.findById(id);
         return user.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/page")
+    public Page<User> getUsers(Pageable pageable) {
+        return userRepository.findAll(pageable);
     }
 
     @PutMapping("/{id}")
@@ -53,5 +61,7 @@ public class UserController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 
 }
